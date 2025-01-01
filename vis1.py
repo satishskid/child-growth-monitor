@@ -3,7 +3,7 @@ import json
 import requests
 import matplotlib.pyplot as plt
 import streamlit as st
-
+from extracted_code import find
 # Firebase URL
 FIREBASE_URL = "https://childmonitoring-951c3-default-rtdb.firebaseio.com/Users.json"
 
@@ -23,19 +23,15 @@ def get_data_from_firebase():
         st.error(f"Error: {response.status_code} {response.text}")
         return {}
 
-# Retrieve data and process it
-bh = pd.read_excel("HFA_Boys.xlsx")
-bh['age']= bh['Month']
-bh = bh.drop("Month",axis = 1)
-print(bh)
-
 data = get_data_from_firebase()
 df = pd.DataFrame(data).T
 df["age"] = pd.to_numeric(df["age"])
 df["height"] = pd.to_numeric(df["height"])
 df["weight"] = pd.to_numeric(df["weight"])
 df["BMI"] = round((df["weight"] * 10000) / (df["height"] ** 2), 2)
-
+df_boy = df[df['gender'] == 'boy']
+df_girl = df[df['gender'] == 'girl']
+find(df_boy,df_girl)
 # Pages based on the selection in the sidebar
 if page == "Home":
     st.title("Welcome to the Children's Health Monitoring System")
@@ -51,8 +47,7 @@ elif page == "Statistics":
     st.title("Statistics of Boys and Girls")
     
     # Separate data for boys and girls
-    df_boy = df[df['gender'] == 'boy']
-    df_girl = df[df['gender'] == 'girl']
+
     
     # Display summary statistics for boys and girls
     st.write("Boys Data")
@@ -62,56 +57,7 @@ elif page == "Statistics":
     st.write(df_girl.describe())
     
 elif page == "Visualizations":
-    # st.title("Visualizations")
-    
-    # # Separate data for boys
-    # df_boy = df[df['gender'] == 'boy']
 
-    # # Scatter plot for boys' height vs age
-    # st.subheader("Height vs Age for Boys")
-    # plt.figure(figsize=(10, 6))
-    # plt.scatter(df_boy['age'], df_boy['height'], color='red', label='Height for Boys', marker='*', s=100)
-    # plt.xlabel("Age of Boys")
-    # plt.ylabel("Height (cm)")
-    # plt.title("Scatter Plot - Height vs Age for Boys")
-    # plt.legend(loc='upper left')
-    # plt.grid(True)
-    # st.pyplot(plt)
-
-    # # Example: BMI vs Age plot
-    # st.subheader("BMI vs Age for Boys")
-    # plt.figure(figsize=(10, 6))
-    # plt.scatter(df_boy['age'], df_boy['BMI'], color='blue', label='BMI for Boys', marker='o', s=100)
-    # plt.xlabel("Age of Boys")
-    # plt.ylabel("BMI")
-    # plt.title("Scatter Plot - BMI vs Age for Boys")
-    # plt.legend(loc='upper left')
-    # plt.grid(True)
-    # st.pyplot(plt)
-    
-    # # Plotting Z-scores for Height for Age
-    # st.subheader("Z-scores for Height for Age - Boys")
-    # # Assuming bh is the DataFrame with the Z-scores data
-    # # Here you can use your own Z-scores dataset for 'bh'
-    # plt.figure(figsize=(10, 6))
-    # plt.plot(bh['age'], bh['SD4neg'], label='-4 SD', color='blue', linestyle='--')
-    # plt.plot(bh['age'], bh['SD3neg'], label='-3 SD', color='cyan', linestyle='--')
-    # plt.plot(bh['age'], bh['SD2neg'], label='-2 SD', color='green', linestyle='--')
-    # plt.plot(bh['age'], bh['SD1neg'], label='-1 SD', color='lime', linestyle='--')
-    # plt.plot(bh['age'], bh['SD0'], label='Median', color='black', linestyle='-')
-    # plt.plot(bh['age'], bh['SD1'], label='+1 SD', color='orange', linestyle='--')
-    # plt.plot(bh['age'], bh['SD2'], label='+2 SD', color='red', linestyle='--')
-    # plt.plot(bh['age'], bh['SD3'], label='+3 SD', color='magenta', linestyle='--')
-    # plt.plot(bh['age'], bh['SD4'], label='+4 SD', color='purple', linestyle='--')
-    # plt.scatter(df_boy['age'], df_boy['height'], color='red', label='Height for Boys', marker='*', s=100)
-    # plt.xlabel("Age of boys")
-    # plt.ylabel("Z-scores")
-    # plt.title("Height for Age - Boys")
-    # plt.legend(loc='upper left', bbox_to_anchor=(1, 1))
-    # plt.grid(True)
-    # st.pyplot(plt)
-   
-    # Load your datasets
     height_df_girl = pd.read_excel('height_df_girl.xlsx')
     bmi_df_girl = pd.read_excel('bmi_df_girl.xlsx')
     weight_df_girl = pd.read_excel('weight_df_girl.xlsx')
