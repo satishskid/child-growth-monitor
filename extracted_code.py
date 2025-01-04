@@ -75,85 +75,85 @@ def find(df_boy,df_girl):
     # Show the updated df_boy with the new column
     print(bmi_df_boy)
 
-    ## for girls
+    # for girls
 
-    # gh = pd.read_excel("HFA_girls.xlsx")
-    # gh['age']= gh['Month']
-    # gh = gh.drop("Month",axis = 1)
-    # print(gh)
+    gh = pd.read_excel("HFA_girls.xlsx")
+    gh['age']= gh['Month']
+    gh = gh.drop("Month",axis = 1)
+    print(gh)
 
-    # height_df_girl = pd.DataFrame()
-    # height_df_girl['age'] = df_girl['age']
-    # height_df_girl['id'] = df_girl['id']
-    # height_df_girl['height'] = df_girl['height']
-    # merged_gh = pd.merge(height_df_girl, gh, left_on='age', right_on='age', how='left')
-    # merged_gh.set_index(df_girl.index, inplace=True)
-    # # print(merged_gh)
-    # # Calculate L * M * S and create a new column in df_girl
-    # merged_gh['HZ'] = ((merged_gh['height']/merged_gh['M'])**merged_gh['L'] -1)/(merged_gh['L'] * merged_gh['S'])
-    # # print(merged_df_girl)
-    # # print(merged_df_girl['HZ'])
-    # # Now you can use merged_df_girl to see the updated DataFrame
-    # height_df_girl = merged_gh
-    # # Show the updated df_girl with the new column
-    # print(height_df_girl)
+    height_df_girl = pd.DataFrame()
+    height_df_girl['age'] = df_girl['age']
+    height_df_girl['id'] = df_girl['id']
+    height_df_girl['height'] = df_girl['height']
+    merged_gh = pd.merge(height_df_girl, gh, left_on='age', right_on='age', how='left')
+    merged_gh.set_index(df_girl.index, inplace=True)
+    # print(merged_gh)
+    # Calculate L * M * S and create a new column in df_girl
+    merged_gh['HZ'] = ((merged_gh['height']/merged_gh['M'])**merged_gh['L'] -1)/(merged_gh['L'] * merged_gh['S'])
+    # print(merged_df_girl)
+    # print(merged_df_girl['HZ'])
+    # Now you can use merged_df_girl to see the updated DataFrame
+    height_df_girl = merged_gh
+    # Show the updated df_girl with the new column
+    print(height_df_girl)
 
-    # weight_df_girl = pd.DataFrame()
-    # weight_df_girl[['age','id','weight']] = df_girl[['age','id','weight']]
-    # print(weight_df_girl)
+    weight_df_girl = pd.DataFrame()
+    weight_df_girl[['age','id','weight']] = df_girl[['age','id','weight']]
+    print(weight_df_girl)
 
-    # gw = pd.read_excel("WFA_girls.xlsx")
-    # gw['age']=gw['Month']
-    # gw = gw.drop('Month',axis=1)
-    # print(gw)
+    gw = pd.read_excel("WFA_girls.xlsx")
+    gw['age']=gw['Month']
+    gw = gw.drop('Month',axis=1)
+    print(gw)
 
-    # merged_gw = pd.DataFrame()
-    # # print(merged_gw)
-    # merged_gw = pd.merge(weight_df_girl, gw, left_on='age', right_on='age', how='left')
-    # merged_gw.set_index(df_girl.index, inplace=True)
-    # # print(merged_gw)
-    # # Calculate L * M * S and create a new column in df_girl
-    # merged_gw['WZ'] = ((merged_gw['weight']/merged_gw['M'])**merged_gw['L'] -1)/(merged_gw['L'] * merged_gw['S'])
-    # # print(merged_df_girl)
-    # # print(merged_df_girl['WZ'])
-    # # Now you can use merged_df_girl to see the updated DataFrame
-    # weight_df_girl = merged_gw
-    # # Show the updated df_girl with the new column
-    # print(weight_df_girl)
+    merged_gw = pd.DataFrame()
+    # print(merged_gw)
+    merged_gw = pd.merge(weight_df_girl, gw, left_on='age', right_on='age', how='left')
+    merged_gw.set_index(df_girl.index, inplace=True)
+    # print(merged_gw)
+    # Calculate L * M * S and create a new column in df_girl
+    merged_gw['WZ'] = ((merged_gw['weight']/merged_gw['M'])**merged_gw['L'] -1)/(merged_gw['L'] * merged_gw['S'])
+    # print(merged_df_girl)
+    # print(merged_df_girl['WZ'])
+    # Now you can use merged_df_girl to see the updated DataFrame
+    weight_df_girl = merged_gw
+    # Show the updated df_girl with the new column
+    print(weight_df_girl)
 
-    # gb = pd.read_excel("BFA_girls.xlsx")
-    # gb['age']=gb['Month']
-    # gb = gb.drop('Month',axis=1)
-    # print(gb)
+    gb = pd.read_excel("BFA_girls.xlsx")
+    gb['age']=gb['Month']
+    gb = gb.drop('Month',axis=1)
+    print(gb)
 
-    # bmi_df_girl = pd.DataFrame()
-    # bmi_df_girl[['age','id','BMI']] = df_girl[['age','id','BMI']]
-    # print(bmi_df_girl)
+    bmi_df_girl = pd.DataFrame()
+    bmi_df_girl[['age','id','BMI']] = df_girl[['age','id','BMI']]
+    print(bmi_df_girl)
 
-    # merged_gb = pd.DataFrame()
-    # # print(merged_gb)
-    # merged_gb = pd.merge(bmi_df_girl, gb, left_on='age', right_on='age', how='left')
-    # merged_gb.set_index(df_girl.index, inplace=True)
-    # # print(merged_gb)
-    # # Calculate L * M * S and create a new column in df_girl
-    # merged_gb['BZ'] = ((merged_gb['BMI']/merged_gb['M'])**merged_gb['L'] -1)/(merged_gb['L'] * merged_gb['S'])
-    # # print(merged_gb)
-    # # print(merged_gb['BZ'])
-    # # Now you can use merged_df_girl to see the updated DataFrame
-    # bmi_df_girl = merged_gb
-    # # Show the updated df_girl with the new column
+    merged_gb = pd.DataFrame()
+    # print(merged_gb)
+    merged_gb = pd.merge(bmi_df_girl, gb, left_on='age', right_on='age', how='left')
+    merged_gb.set_index(df_girl.index, inplace=True)
+    # print(merged_gb)
+    # Calculate L * M * S and create a new column in df_girl
+    merged_gb['BZ'] = ((merged_gb['BMI']/merged_gb['M'])**merged_gb['L'] -1)/(merged_gb['L'] * merged_gb['S'])
+    # print(merged_gb)
+    # print(merged_gb['BZ'])
+    # Now you can use merged_df_girl to see the updated DataFrame
+    bmi_df_girl = merged_gb
+    # Show the updated df_girl with the new column
 
-    # print(height_df_girl)
-    # print(bmi_df_girl)
-    # print(weight_df_girl)
+    print(height_df_girl)
+    print(bmi_df_girl)
+    print(weight_df_girl)
 
-    # print(height_df_boy)
-    # print(bmi_df_boy)
-    # print(weight_df_boy)
+    print(height_df_boy)
+    print(bmi_df_boy)
+    print(weight_df_boy)
 
-    # height_df_girl.to_excel('height_df_girl.xlsx', index=True, index_label='Name')
-    # bmi_df_girl.to_excel('bmi_df_girl.xlsx', index=True, index_label='Name')
-    # weight_df_girl.to_excel('weight_df_girl.xlsx', index=True, index_label='Name')
+    height_df_girl.to_excel('height_df_girl.xlsx', index=True, index_label='Name')
+    bmi_df_girl.to_excel('bmi_df_girl.xlsx', index=True, index_label='Name')
+    weight_df_girl.to_excel('weight_df_girl.xlsx', index=True, index_label='Name')
     height_df_boy.to_excel('height_df_boy.xlsx', index=True, index_label='Name')
     bmi_df_boy.to_excel('bmi_df_boy.xlsx', index=True, index_label='Name')
     weight_df_boy.to_excel('weight_df_boy.xlsx', index=True, index_label='Name')
