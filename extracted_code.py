@@ -77,7 +77,7 @@ def find(df_boy,df_girl):
 
     # for girls
 
-    gh = pd.read_excel("HFA_girls.xlsx")
+    gh = pd.read_excel("HFA_Girls.xlsx")
     gh['age']= gh['Month']
     gh = gh.drop("Month",axis = 1)
     print(gh)
@@ -102,7 +102,7 @@ def find(df_boy,df_girl):
     weight_df_girl[['age','id','weight']] = df_girl[['age','id','weight']]
     print(weight_df_girl)
 
-    gw = pd.read_excel("WFA_girls.xlsx")
+    gw = pd.read_excel("WFA_Girls.xlsx")
     gw['age']=gw['Month']
     gw = gw.drop('Month',axis=1)
     print(gw)
@@ -121,7 +121,7 @@ def find(df_boy,df_girl):
     # Show the updated df_girl with the new column
     print(weight_df_girl)
 
-    gb = pd.read_excel("BFA_girls.xlsx")
+    gb = pd.read_excel("BFA_Girls.xlsx")
     gb['age']=gb['Month']
     gb = gb.drop('Month',axis=1)
     print(gb)
