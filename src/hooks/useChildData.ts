@@ -24,7 +24,7 @@ export const useChildData = () => {
     queryFn: fetchChildData,
   });
 
-  const { mutate: addChildData, isLoading: isAddingData } = useMutation({
+  const { mutate: addChildData, isPending: isAddingData } = useMutation({
     mutationFn: async (newChild: Omit<ChildData, 'id'>) => {
       const childRef = push(ref(database, 'children'));
       await set(childRef, newChild);

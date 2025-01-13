@@ -37,3 +37,44 @@ export interface ChartData {
     fill: boolean;
   }[];
 }
+
+export interface Measurement {
+  date: string;
+  age: number;
+  height: number;
+  weight: number;
+}
+
+export interface Intervention {
+  id: string;
+  date: string;
+  type: 'Nutrition' | 'Medical' | 'Educational' | 'Other';
+  description: string;
+  status: 'Planned' | 'In Progress' | 'Completed';
+  outcome?: string;
+  nextFollowUp?: string;
+}
+
+export interface Program {
+  id: string;
+  name: string;
+  startDate: string;
+  endDate: string;
+  organization: string;
+  description: string;
+  status: 'Active' | 'Completed' | 'Planned';
+  location: string;
+  targetBeneficiaries: number;
+  currentBeneficiaries: number;
+}
+
+export interface Child {
+  id: string;
+  name: string;
+  birthDate: string;
+  gender: 'boy' | 'girl';
+  image?: string;
+  programId: string;
+  measurements: Measurement[];
+  interventions: Intervention[];
+}

@@ -1,68 +1,71 @@
 import React from 'react';
 import Layout from '../components/layout/Layout';
-import GrowthChart from '../components/charts/GrowthChart';
+import WHOGrowthChart from '../components/charts/WHOGrowthChart';
+import TrendAnalysis from '../components/charts/TrendAnalysis';
+
+// Mock data - replace with real data from your database
+const mockChildren = [
+  {
+    id: '1',
+    name: 'John D.',
+    measurements: [
+      { date: '2023-01-15', age: 0, height: 50, weight: 3.5 },
+      { date: '2023-04-15', age: 3, height: 61, weight: 6.0 },
+      { date: '2023-07-15', age: 6, height: 67, weight: 7.8 },
+      { date: '2023-10-15', age: 9, height: 72, weight: 9.2 },
+      { date: '2024-01-15', age: 12, height: 76, weight: 10.5 },
+    ],
+  },
+  {
+    id: '2',
+    name: 'Sarah M.',
+    measurements: [
+      { date: '2023-01-15', age: 0, height: 49, weight: 3.3 },
+      { date: '2023-04-15', age: 3, height: 59, weight: 5.8 },
+      { date: '2023-07-15', age: 6, height: 65, weight: 7.5 },
+      { date: '2023-10-15', age: 9, height: 70, weight: 8.9 },
+      { date: '2024-01-15', age: 12, height: 74, weight: 10.2 },
+    ],
+  },
+];
 
 export default function Visualizations() {
-  const heightData = {
-    labels: [0, 12, 24, 36, 48, 60],
-    datasets: [
-      {
-        label: 'Height (Boys)',
-        data: [50, 75, 87, 96, 102, 108],
-        borderColor: 'rgb(75, 192, 192)',
-        fill: false,
-      },
-      {
-        label: 'Height (Girls)',
-        data: [49, 73, 85, 94, 100, 106],
-        borderColor: 'rgb(255, 99, 132)',
-        fill: false,
-      },
-    ],
-  };
-
-  const weightData = {
-    labels: [0, 12, 24, 36, 48, 60],
-    datasets: [
-      {
-        label: 'Weight (Boys)',
-        data: [3.5, 9, 12, 14, 16, 18],
-        borderColor: 'rgb(54, 162, 235)',
-        fill: false,
-      },
-      {
-        label: 'Weight (Girls)',
-        data: [3.3, 8.5, 11.5, 13.5, 15.5, 17.5],
-        borderColor: 'rgb(255, 159, 64)',
-        fill: false,
-      },
-    ],
-  };
-
   return (
     <Layout>
-      <div className="space-y-6">
-        <h1 className="text-3xl font-bold">Visualizations</h1>
+      <div className="space-y-8 p-6">
+        <h1 className="text-3xl font-bold">Growth Visualizations</h1>
         
-        <div className="space-y-8">
-          <div className="bg-white dark:bg-gray-800 shadow rounded-lg p-6">
-            <h2 className="text-xl font-bold mb-4">Height Growth Charts</h2>
-            <GrowthChart
-              data={heightData}
-              title="Height by Age and Gender"
-              yAxisLabel="Height (cm)"
-              whoStandards={[]}
-            />
-          </div>
+        {/* WHO Growth Standards */}
+        <div className="space-y-6">
+          <h2 className="text-2xl font-semibold">WHO Growth Standards</h2>
+          
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            {/* Height Standards */}
+            <div>
+              <h3 className="text-xl font-semibold mb-4">Height-for-Age</h3>
+              <div className="space-y-6">
+                <WHOGrowthChart type="height" gender="boy" />
+                <WHOGrowthChart type="height" gender="girl" />
+              </div>
+            </div>
 
-          <div className="bg-white dark:bg-gray-800 shadow rounded-lg p-6">
-            <h2 className="text-xl font-bold mb-4">Weight Growth Charts</h2>
-            <GrowthChart
-              data={weightData}
-              title="Weight by Age and Gender"
-              yAxisLabel="Weight (kg)"
-              whoStandards={[]}
-            />
+            {/* Weight Standards */}
+            <div>
+              <h3 className="text-xl font-semibold mb-4">Weight-for-Age</h3>
+              <div className="space-y-6">
+                <WHOGrowthChart type="weight" gender="boy" />
+                <WHOGrowthChart type="weight" gender="girl" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Trend Analysis */}
+        <div className="space-y-6">
+          <h2 className="text-2xl font-semibold">Growth Trends</h2>
+          <div className="grid grid-cols-1 gap-6">
+            <TrendAnalysis children={mockChildren} type="height" />
+            <TrendAnalysis children={mockChildren} type="weight" />
           </div>
         </div>
       </div>

@@ -13,8 +13,8 @@ export const useAuth = () => {
   return {
     user: mockUser,
     loading: false,
-    signIn: async () => mockUser,
-    signUp: async () => mockUser,
+    signIn: async (email: string, password: string) => mockUser,
+    signUp: async (email: string, password: string) => mockUser,
     signOut: async () => {},
   };
 };

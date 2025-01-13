@@ -7,27 +7,27 @@ const Navbar: React.FC = () => {
   const { theme, toggleTheme } = useTheme();
 
   return (
-    <nav className="fixed top-0 left-0 right-0 bg-white dark:bg-gray-800 shadow-md z-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-16">
+    <nav className="fixed top-0 left-0 right-0 h-16 bg-white shadow-sm z-50">
+      <div className="h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between items-center h-full">
           <div className="flex items-center">
-            <Link href="/" className="flex-shrink-0 flex items-center">
-              <span className="text-2xl font-bold text-blue-600 dark:text-blue-400">
+            <Link href="/" className="flex items-center">
+              <span className="text-xl font-bold text-blue-600">
                 Child Growth Monitor
               </span>
             </Link>
           </div>
 
-          <div className="flex items-center">
+          <div className="flex items-center space-x-4">
             <button
               onClick={toggleTheme}
-              className="p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-150"
+              className="p-2 rounded-lg hover:bg-gray-100 transition-colors duration-150"
               aria-label="Toggle theme"
             >
               {theme === 'dark' ? (
-                <FiSun className="w-6 h-6 text-yellow-400" />
+                <FiSun className="w-5 h-5 text-yellow-500" />
               ) : (
-                <FiMoon className="w-6 h-6 text-gray-600" />
+                <FiMoon className="w-5 h-5 text-gray-600" />
               )}
             </button>
           </div>
